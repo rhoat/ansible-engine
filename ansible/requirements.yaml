@@ -1,0 +1,14 @@
+roles:
+  - name: proxmox-templates
+    src: git@github.com:PragmaticEngineering/ansibleRole-proxmox-templates.git
+    version: main
+    scm: git
+  - name: proxmox-realtek
+    src: git@github.com:PragmaticEngineering/ansibleRole-proxmox-realtek.git
+    version: main
+    scm: git
+  - name: proxmox-iSCSI
+    src: git@github.com:PragmaticEngineering/ansibleRole-proxmox-iSCSI.git
+    version: main
+    scm: git
+collections:

@@ -1,0 +1,15 @@
+[proxmox]
+proxmox-[01:07].home.local
+
+[k8s:children]
+k8smasters
+k8sworkers
+
+[k8smasters]
+
+[k8sworkers]
+
+[k8smasters:vars]
+kubernetes_role=master
+[k8sworkers:vars]
+kubernetes_role=node

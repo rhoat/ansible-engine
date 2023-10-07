@@ -1,0 +1,4 @@
+# syntax=docker/dockerfile:1
+FROM willhallonline/ansible:2.11-ubuntu-20.04
+RUN mkdir -p /root/.ssh/
+RUN chmod 700 /root/.ssh

@@ -1,0 +1,20 @@
+- name: proxmox_init.yml
+  hosts: proxmox
+  gather_facts: true
+  vars_prompt: 
+  - name: "ansible_password"
+    prompt: "Enter the remote password"
+    private: yes
+  vars: 
+    ansible_user: root
+    install_sudo: true 
+    sudoers: true # because no sudoers file on proxmox
+  tasks:
+  - name: ping servers
+    ping:
+  - import_role: 
+      name: users
+  - import_role: 
+      name: proxmox-realtek
+  - import_role: 
+      name: proxmox-iSCSI

@@ -102,7 +102,12 @@ If you are using WSL your ssh keys will be mounted in from your windows system. 
 
 ```bash
 ln -s /mnt/c/Users/<username>/.ssh ~/.ssh
+# If you have spaces, you will need to escape them
+ln -s /mnt/c/Users/<My\ username>/My\ Documents/.ssh ~/.ssh
 ```
+
+if wsl is causing permissions issues with the simlink you can try modifying the wsl config to allow meta permissions to be created on files in your windows directory. OR you can just copy the ssh keys into your linux home directory. 
+
 
 This allows the ansible container to find your ssh keys. 
 

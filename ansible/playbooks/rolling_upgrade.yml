@@ -1,5 +1,6 @@
 ---
 - name: Rolling APT Upgrade
+  hosts: all
   serial: 1  # Only one host at a time
   become: true
   tasks:

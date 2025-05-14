@@ -1,0 +1,37 @@
+---
+- name: Rolling APT Upgrade
+  serial: 1  # Only one host at a time
+  become: true
+  tasks:
+    - name: Update APT cache
+      apt:
+        update_cache: yes
+
+    - name: Upgrade all packages
+      apt:
+        upgrade: dist
+        autoremove: yes
+
+    - name: Check if reboot is required
+      register: reboot_required
+      shell: |
+        if [ -f /var/run/reboot-required ]; then
+          echo true
+        else
+          echo false
+        fi
+      changed_when: false
+
+    - name: Reboot the server if needed
+      ansible.builtin.reboot:
+        reboot_timeout: 600
+      when: reboot_required.stdout == "true"
+
+    - name: Wait for server to come back online
+      wait_for:
+        host: "{{ inventory_hostname }}"
+        port: 22
+        delay: 10
+        timeout: 300
+        state: started
+      when: reboot_required.stdout == "true"

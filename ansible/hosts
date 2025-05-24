@@ -1,13 +1,25 @@
+[networkSupport]
+nut.rhoat.com
+netsupport01.home.lan
+
 [proxmox]
-proxmox-[01:07].home.local
+proxmox-[01:07].rhoat.com
+
+[pbs]
+pbs.rhoat.com
+
+[docker]
+docker01.home.lan
 
 [k8s:children]
 k8smasters
 k8sworkers
 
 [k8smasters]
+k8s-cp-[01:03].home.lan
 
 [k8sworkers]
+k8s-wn-[01:03].home.lan
 
 [k8smasters:vars]
 kubernetes_role=master

@@ -36,3 +36,6 @@
         timeout: 300
         state: started
       when: reboot_required.stdout == "true"
+    - name: Wait 5 minutes before proceeding to the next host
+      pause:
+        minutes: 5

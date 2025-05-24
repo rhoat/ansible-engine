@@ -39,3 +39,4 @@
     - name: Wait 5 minutes before proceeding to the next host
       pause:
         minutes: 5
+      when: reboot_required.stdout == "true"

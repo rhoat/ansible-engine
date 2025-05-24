@@ -3,6 +3,8 @@
   hosts: all
   serial: 1  # Only one host at a time
   become: true
+  any_errors_fatal: false # potential errors that could cause playbook to exit early
+  ignore_unreachable: true # incase servers are powered down
   tasks:
     - name: Update APT cache
       apt:
